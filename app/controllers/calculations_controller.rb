@@ -16,8 +16,16 @@ class CalculationsController < ApplicationController
     @character_count_with_spaces = @text.length
 
     @character_count_without_spaces = @text.gsub(" ","").length
+    
+    occurred = 0
+    
+    @text.split.each do |word|
+      if word.downcase == @special_word.downcase
+        occurred = occurred + 1
+      end
+    end
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = occurred
 
     # ================================================================================
     # Your code goes above.
