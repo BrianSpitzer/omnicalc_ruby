@@ -11,13 +11,21 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
 
-    @word_count = "Replace this string with your answer."
+    @word_count = @text.split.count
 
-    @character_count_with_spaces = "Replace this string with your answer."
+    @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    @character_count_without_spaces = @text.gsub(" ","").length
+    
+    occurred = 0
+    
+    @text.split.each do |word|
+      if word.downcase.gsub(/[^a-z0-9\s]/i, "") == @special_word.downcase
+        occurred = occurred + 1
+      end
+    end
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = occurred
 
     # ================================================================================
     # Your code goes above.
