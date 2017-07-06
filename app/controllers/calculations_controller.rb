@@ -20,7 +20,7 @@ class CalculationsController < ApplicationController
     occurred = 0
     
     @text.split.each do |word|
-      if word.downcase == @special_word.downcase
+      if word.downcase.gsub(/[^a-z0-9\s]/i, "") == @special_word.downcase
         occurred = occurred + 1
       end
     end
