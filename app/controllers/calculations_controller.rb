@@ -113,10 +113,7 @@ class CalculationsController < ApplicationController
     end
     
     sum = 0
-    mean = 0
-    variance = 0
-    standard_deviation = 0
-    
+
     @sorted_numbers.each do |number|
       sum = sum + number
     end
@@ -125,9 +122,17 @@ class CalculationsController < ApplicationController
 
     @mean = sum/@count
 
-    @variance = "Replace this string with your answer."
+    x_bar_squared = 0
+    x_bar_squared_sum = 0
 
-    @standard_deviation = "Replace this string with your answer."
+    @sorted_numbers.each do |number|
+      x_bar_squared = (number - @mean)**2
+      x_bar_squared_sum += x_bar_squared
+    end
+    
+    @variance = x_bar_squared_sum / (@count - 1)
+
+    @standard_deviation = @variance**0.5
 
     @mode = "Replace this string with your answer."
 
