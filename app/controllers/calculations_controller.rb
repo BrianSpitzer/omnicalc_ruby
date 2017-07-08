@@ -134,7 +134,52 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = @variance**0.5
 
-    @mode = "Replace this string with your answer."
+
+    #count the number of occurrences of each number    
+    mode_array = []
+    loop_count = 0
+    prev_number = 0
+    
+    @sorted_numbers.each do |number|
+      if loop_count == 0
+        number_hash = { :value => number, :count => 1 }
+        mode_array.push(number_hash)
+        prev_number = number
+      elsif number == prev_number
+          mode_array.last[:count] += 1
+      else
+        number_hash = { :value => number, :count => 1 }
+        mode_array.push(number_hash)
+        prev_number = number
+      end
+    
+      loop_count += 1
+    end
+
+    #determine the maximum number of occurrences of any value
+    maximum_count = 0
+
+    mode_array.each do |contender|
+      if contender[:count] > maximum_count
+        maximum_count = contender[:count]
+      end
+    end 
+    
+    #figure out how many values have the maximum count
+    
+    modes = []
+    
+    mode_array.each do |contender|
+      if contender[:count] == maximum_count
+        modes.push(contender[:value])
+      end
+    end
+  
+    if modes.count == 1
+      @mode = modes.first
+    else
+      @mode = modes
+    end
 
     # ================================================================================
     # Your code goes above.
