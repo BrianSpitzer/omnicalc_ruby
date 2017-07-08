@@ -130,7 +130,7 @@ class CalculationsController < ApplicationController
       x_bar_squared_sum += x_bar_squared
     end
     
-    @variance = x_bar_squared_sum / (@count - 1)
+    @variance = x_bar_squared_sum / (@count)
 
     @standard_deviation = @variance**0.5
 
