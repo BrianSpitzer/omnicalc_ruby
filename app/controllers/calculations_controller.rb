@@ -50,7 +50,7 @@ class CalculationsController < ApplicationController
     
     number_of_payments = @years * 12
 
-    @monthly_payment = @principal * monthly_rate * (1 + monthly_rate)**number_of_payments / (((1+monthly_rate)**number_of_payments)-1)  #this isn't right yet.
+    @monthly_payment = @principal * monthly_rate * (1 + monthly_rate)**number_of_payments / (((1+monthly_rate)**number_of_payments)-1)
     
     # ================================================================================
     # Your code goes above.
@@ -93,8 +93,6 @@ class CalculationsController < ApplicationController
     # Your code goes below.
     # The numbers the user input are in the array @numbers.
     # ================================================================================
-    
-    #sorted_numbers = @numbers.sort
     
     @sorted_numbers = @numbers.sort
     
@@ -165,7 +163,8 @@ class CalculationsController < ApplicationController
       end
     end 
     
-    #figure out how many values have the maximum count
+    # Figure out how many values have the maximum count. if there's only one, it
+    # is the mode. Otherwise, any value with the maximum count is a mode.
     
     modes = []
     
