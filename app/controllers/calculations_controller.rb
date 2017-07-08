@@ -93,22 +93,37 @@ class CalculationsController < ApplicationController
     # Your code goes below.
     # The numbers the user input are in the array @numbers.
     # ================================================================================
+    
+    #sorted_numbers = @numbers.sort
+    
+    @sorted_numbers = @numbers.sort
+    
+    @count = @sorted_numbers.count
 
-    @sorted_numbers = "Replace this string with your answer."
+    @minimum = @sorted_numbers[0]
+    
+    @maximum = @sorted_numbers[@count-1]
 
-    @count = "Replace this string with your answer."
+    @range = @maximum - @minimum
 
-    @minimum = "Replace this string with your answer."
+    if @count.odd?
+      @median = @sorted_numbers[@count/2]
+      elsif
+      @median = (@sorted_numbers[@count/2-1] + @sorted_numbers[@count/2])/2
+    end
+    
+    sum = 0
+    mean = 0
+    variance = 0
+    standard_deviation = 0
+    
+    @sorted_numbers.each do |number|
+      sum = sum + number
+    end
+    
+    @sum = sum
 
-    @maximum = "Replace this string with your answer."
-
-    @range = "Replace this string with your answer."
-
-    @median = "Replace this string with your answer."
-
-    @sum = "Replace this string with your answer."
-
-    @mean = "Replace this string with your answer."
+    @mean = sum/@count
 
     @variance = "Replace this string with your answer."
 
